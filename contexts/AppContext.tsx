@@ -1,27 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-export interface User {
-  id: string;
-  phone: string;
-  fullname?: string;
-  email?: string;
-  avatar?: string;
-  type: 'client' | 'transporter';
-  isProfileComplete?: boolean;
-  vehicule: Vehicle[];
-}
-
-export interface Vehicle {
-  id: string;
-  type: 'truck' | 'motorcycle' | 'van' | 'car';
-  capacity: number;
-  pricePerKm: number;
-  pricePerKg?: number;
-  licensePlate: string;
-  model: string;
-  image?: string;
-}
+import { User, Vehicle, ActiveRide } from '@/types';
 
 export interface AppContextType {
   user: User | null;
@@ -38,21 +17,6 @@ export interface AppContextType {
   setHasSubscription: (has: boolean) => void;
   activeRide: ActiveRide | null;
   setActiveRide: (ride: ActiveRide | null) => void;
-}
-
-export interface ActiveRide {
-  id: string;
-  client: string;
-  pickup: string;
-  destination: string;
-  price: number;
-  distance: string;
-  time: string;
-  vehicleType: string;
-  serviceType: string;
-  transportType: string;
-  status: 'accepted' | 'pickup' | 'inProgress' | 'completed';
-  acceptedAt: Date;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);

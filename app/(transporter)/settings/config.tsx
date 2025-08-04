@@ -108,7 +108,7 @@ export default function VehicleConfigScreen() {
       image: vehicleImage,
     };
 
-    await setVehicle(newVehicle);
+    // await setVehicle(newVehicle);
     showToast('success', 'Véhicule enregistré !');
     router.back();
   };
