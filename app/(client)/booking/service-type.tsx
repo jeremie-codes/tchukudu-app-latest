@@ -65,7 +65,7 @@ export default function ServiceTypeScreen() {
             <TouchableOpacity
               key={service.id}
               onPress={() => setSelectedService(service.id)}
-              className={`border-2 rounded-xl p-4 ${
+              className={`border-2 rounded-xl p-4 mb-2 ${
                 selectedService === service.id 
                   ? 'border-yellow-500 bg-yellow-50' 
                   : 'border-gray-200 bg-white'

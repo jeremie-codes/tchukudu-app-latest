@@ -63,38 +63,40 @@ export default function BookingScreen() {
         </Text>
       </View>
 
-      <ScrollView className="flex-1 px-6 py-6">
-        <Text className="text-gray-800 text-lg font-montserrat-bold mb-6">
+      <View className='p-6'>
+        <Text className="text-gray-800 text-xl font-montserrat-bold mb-6">
           Type de véhicule
         </Text>
+      </View>
+      
+      <ScrollView className=" flex-1 mx-4" horizontal showsHorizontalScrollIndicator={false}>
 
-        <View className="space-y-4">
           {vehicleTypes.map((vehicle) => (
-            <TouchableOpacity
-              key={vehicle.id}
-              onPress={() => setSelectedVehicle(vehicle.id)}
-              className={`border-2 rounded-xl p-4 ${
-                selectedVehicle === vehicle.id 
-                  ? 'border-yellow-500 bg-yellow-50' 
-                  : 'border-gray-200 bg-white'
-              }`}
-            >
-              <View className="flex-row items-center">
-                <View className={`w-12 h-12 ${vehicle.color} rounded-full items-center justify-center mr-4`}>
-                  <vehicle.icon size={24} color="white" />
-                </View>
-                <View className="flex-1">
-                  <Text className="text-gray-800 font-montserrat-bold text-lg">
-                    {vehicle.name}
-                  </Text>
-                  <Text className="text-gray-600 font-montserrat">
-                    {vehicle.description}
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
+            <View className="space-y-4 mr-3" key={vehicle.id}>
+                <TouchableOpacity
+                  onPress={() => setSelectedVehicle(vehicle.id)}
+                  className={`border-2 rounded-xl p-4 h-80 w-[300] ${
+                    selectedVehicle === vehicle.id 
+                      ? 'border-yellow-500 bg-yellow-50' 
+                      : 'border-gray-200 bg-white'
+                  }`}
+                >
+                  <View className="flex-1">
+                    <Text className="text-gray-800 font-montserrat-bold text-lg">
+                      {vehicle.name}
+                    </Text>
+                    <Text className="text-gray-600 font-montserrat">
+                      {vehicle.description}
+                    </Text>
+                  </View>
+                  <View className="flex-1 items-center ">
+                    <View className={`flex-1 ${vehicle.color} items-center rounded-lg justify-center w-full`}>
+                      <vehicle.icon size={100} color="white" />
+                    </View>
+                  </View>
+                </TouchableOpacity>
+            </View>
           ))}
-        </View>
       </ScrollView>
 
       {/* Continue Button */}

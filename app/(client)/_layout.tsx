@@ -13,9 +13,9 @@ export default function ClientLayout() {
           backgroundColor: '#ffffff',
           borderTopWidth: 1,
           borderTopColor: '#e5e7eb',
-          paddingBottom: 8,
+          paddingBottom: 20,
           paddingTop: 8,
-          height: 70,
+          height: 80,
         },
         tabBarLabelStyle: {
           fontFamily: 'Montserrat-Medium',

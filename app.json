@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "T'chukudu",
+    "name": "Tchukudu",
     "slug": "t-chukudu",
-    "scheme": "t-chukudu",
+    "scheme": "tchukudu",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -33,9 +33,11 @@
       "versionCode": 3,
       "package": "com.tchukudu.app",
       "permissions": [
-        "CAMERA",
-        "RECORD_AUDIO",
-        "READ_MEDIA_IMAGES"
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
       ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
@@ -52,6 +54,7 @@
     "extra": {
       "router": {},
       "eas": {
+        "projectId": "1dbe0eee-8a29-4112-af89-7f30ccb43654"
       }
     },
     "plugins": [

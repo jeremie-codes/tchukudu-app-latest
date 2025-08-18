@@ -67,7 +67,7 @@ export default function TransportTypeScreen() {
             <TouchableOpacity
               key={type.id}
               onPress={() => setSelectedType(type.id)}
-              className={`border-2 rounded-xl p-4 ${
+              className={`border-2 rounded-xl p-4 mb-2 ${
                 selectedType === type.id 
                   ? 'border-yellow-500 bg-yellow-50' 
                   : 'border-gray-200 bg-white'

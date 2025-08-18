@@ -5,7 +5,7 @@ import { Truck, User, MapPin } from 'lucide-react-native';
 
 export default function WelcomeScreen() {
   return (
-    <View className="flex-1 bg-purple-950 px-8 justify-center items-center">
+    <View className="flex-1 bg-white px-8 justify-center items-center">
       {/* Header */}
       {/* <View className="pt-16 pb-8 px-6">
         <Text className="text-white text-4xl font-montserrat-bold text-center">

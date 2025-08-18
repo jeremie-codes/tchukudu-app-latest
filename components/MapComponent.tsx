@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import MapView, { Marker, Polyline } from 'react-native-maps';
-import { MapPin, Navigation, Phone } from 'lucide-react-native';
+import { Navigation } from 'lucide-react-native';
 
 interface Transporter {
   id: string;
@@ -46,7 +46,6 @@ export default function MapComponent({
   });
 
   const [routeCoordinates, setRouteCoordinates] = useState<any[]>([]);
-  const { width, height } = Dimensions.get('window');
 
   useEffect(() => {
     if (currentLocation) {
@@ -61,7 +60,7 @@ export default function MapComponent({
 
   useEffect(() => {
     if (showRoute && currentLocation) {
-      // Generate route coordinates (in production, use Google Directions API)
+      // Générer des coordonnées fictives (en prod, utiliser Google Directions API)
       const destinationCoords = transporterLocation || { 
         latitude: currentLocation.latitude + 0.02, 
         longitude: currentLocation.longitude + 0.015 
@@ -81,9 +80,9 @@ export default function MapComponent({
   return (
     <View className="flex-1 relative">
       <MapView
-        style={{ width, height: height - 200 }}
+        style={{ flex: 1 }}
         initialRegion={region}
-        onRegionChange={setRegion}
+        onRegionChangeComplete={setRegion}
         showsUserLocation={true}
         showsMyLocationButton={true}
         showsTraffic={true}
@@ -109,23 +108,25 @@ export default function MapComponent({
 
         {/* Transporter Markers (for selection) */}
         {transporters.map((transporter) => (
-          <Marker
-            key={transporter.id}
-            coordinate={transporter.location}
-            title={transporter.name}
-            description={`${transporter.vehicle} - $${transporter.price}`}
-            onPress={() => onSelectTransporter(transporter)}
-          >
-            <View className="bg-yellow-500 p-2 rounded-full">
-              <Text className="text-white font-montserrat-bold text-xs">
-                ${transporter.price}
-              </Text>
-            </View>
-          </Marker>
+          transporter.location?.latitude && transporter.location?.longitude && (
+            <Marker
+              key={transporter.id}
+              coordinate={transporter.location}
+              title={transporter.name}
+              description={`${transporter.vehicle} - $${transporter.price}`}
+              onPress={() => onSelectTransporter(transporter)}
+            >
+              <View className="bg-yellow-500 p-2 rounded-full">
+                <Text className="text-white font-montserrat-bold text-xs">
+                  ${transporter.price}
+                </Text>
+              </View>
+            </Marker>
+          )
         ))}
 
         {/* Route Polyline */}
-        {showRoute && routeCoordinates.length > 0 && (
+        {showRoute && routeCoordinates.length > 0 && routeCoordinates.every(p => p.latitude && p.longitude) && (
           <Polyline
             coordinates={routeCoordinates}
             strokeColor="#f59e0b"
